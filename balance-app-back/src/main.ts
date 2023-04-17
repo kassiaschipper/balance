@@ -4,8 +4,7 @@ import { ValidationPipe } from '@nestjs/common';
 
 async function bootstrap() {
   const app = await NestFactory.create(AppModule);
-  
-  //valida p body
+  app.enableCors();
   app.useGlobalPipes(
     new ValidationPipe({
       transform: true,
@@ -14,8 +13,8 @@ async function bootstrap() {
     }),
   );
   
-  await app.listen(3000);
+  await app.listen(4000);
 
-  console.log("Listening on port 3000")
+  console.log("Listening on port 4000")
 }
 bootstrap();
