@@ -1,6 +1,5 @@
 import styled from "styled-components";
-import { useState } from "react";
-import { Button } from "../authComponents/SignIn";
+import { useEffect, useState } from "react";
 import { postFile } from "../../service/balance";
 import Total from "./Total";
 
@@ -15,6 +14,7 @@ export default function Home() {
     const fileReader = new FileReader();
     const array = [];
 
+ 
     const csvFileToArray = (string) => {
       const lines = string.split("\n");
       if (lines.length > 0) {
@@ -27,6 +27,7 @@ export default function Home() {
               const balance = parseInt(contents[2]);
               //TODO: Verificar se é possível usar o mesmo objeto para o array e para o postFile
               array.push({ date: contents[0], document, balance });
+                                    
               postFile({
                 sate: date,
                 cpf: document,
@@ -39,6 +40,7 @@ export default function Home() {
                   if (res.message === `Request failed with status code 401`)
                     alert("Você precisa de autorização");
                 });
+                
             }
           }
         }
@@ -71,7 +73,7 @@ export default function Home() {
 
           <button>Upload</button>
         </form>
-        <Total />
+       {/* <WrapperTotal><Total /></WrapperTotal>  */}
       </FormWrapper>
       <br />
       <TableWrapper>
@@ -95,6 +97,7 @@ export default function Home() {
           </tbody>
         </table>
       </TableWrapper>
+      <WrapperTotal><Total /></WrapperTotal> 
     </>
   );
 }
@@ -180,3 +183,8 @@ const TableWrapper = styled.div`
     width: 10rem;
   }
 `;
+const WrapperTotal = styled.div`
+  width: 40vw;
+  margin: 1rem auto 0 auto;
+
+`

@@ -25,7 +25,11 @@ export class FileService {
             _sum:{balance:true}
         });
         
-        return sum;   
+    return sum.map((value) => ({
+        sum:value._sum.balance,
+        cpf:value.cpf,
+        date: new Date(value.sate).toISOString().slice(0, 10)
+    }));   
 
     }
 }
