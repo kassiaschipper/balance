@@ -6,46 +6,43 @@ import { postFile } from "../../service/balance";
 export default function Home() {
   const [file, setFile] = useState();
   const [data, setData] = useState([]);
-  const [disabledInput, setDisabledInput] = useState(false);
+  const [refresh, setRefresh] = useState(false);
 
   function sendForm(e) {
     e.preventDefault();
-    setDisabledInput(true);
 
     const fileReader = new FileReader();
+    const array = [];
 
     const csvFileToArray = (string) => {
-      
-       const csvHeader = string.slice(0, string.indexOf("\n")).split(",");
-      const csvRows = string.slice(string.indexOf("\n") + 1).split("\n");
-
-      const array = csvRows.map((i) => {
-        const values = i.split(",");
-        const obj = csvHeader.reduce((object, header, index) => {
-          object[header] = values[index];
-          return object;
-        }, {});
-        return obj;
-      });
-     
+      const lines = string.split("\n");
+      if (lines.length > 0) {
+        for (const element of lines) {
+          const contents = element.split(",");
+          if (contents.length === 3) {
+            const date = new Date(contents[0]);
+            if (!isNaN(date.getTime())) {
+              const document = contents[1];
+              const balance = parseInt(contents[2]);
+              //TODO: Verificar se é possível usar o mesmo objeto para o array e para o postFile
+              array.push({ date: contents[0], document, balance });
+              postFile({
+                sate: date,
+                cpf: document,
+                balance,
+              })
+                .then((res) => {
+                  setRefresh(true)
+                })
+                .catch((res) => {
+                  if (res.message === `Request failed with status code 401`)
+                    alert("Você precisa de autorização");
+                });
+            }
+          }
+        }
+      }
       setData(array);
-      
-      const body = {
-        data
-      };
-      console.log(body)
-
-      postFile(body)
-        .then((res) => {
-          //resetForm();
-          alert("dados enviados");
-          console.log(body);
-        })
-        .catch(res =>{
-          //resetForm();
-          if(res.message === `Request failed with status code 401`)
-          alert("Você precisa de autorização");
-        }) 
     };
 
     if (file) {
@@ -60,9 +57,6 @@ export default function Home() {
 
   const headerKeys = Object.keys(Object.assign({}, ...data));
 
-  // function resetForm() {
-  //   setData("");  
-  // }
   return (
     <>
       <FormWrapper>

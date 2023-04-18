@@ -19,7 +19,8 @@ function postSignIn(body) {
 }
 
 function postFile(body){
-  const promise = axios.post(`${BASE_URL}/home`, body);
+  const config = createHeaders();
+  const promise = axios.post(`${BASE_URL}/home`, body, config);
   return promise;
 }
 

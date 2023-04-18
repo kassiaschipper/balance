@@ -47,7 +47,7 @@ export default function SignIn() {
         }
         resetForm();
         alert(
-          `Ango deu errado, tente novamente. (${res.response.status} - ${res.response.data})`
+          `Algo deu errado, tente novamente. (${res.response.status} - ${res.response.data})`
         );
         setDisabledInput(false);
       });
