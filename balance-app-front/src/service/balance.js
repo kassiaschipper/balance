@@ -24,4 +24,10 @@ function postFile(body){
   return promise;
 }
 
-export { postSignIn, postFile }
+function getTotal(){
+  const config = createHeaders();
+  const promise = axios.get(`${BASE_URL}/home`,config);
+  return promise;
+}
+
+export { postSignIn, postFile, getTotal }

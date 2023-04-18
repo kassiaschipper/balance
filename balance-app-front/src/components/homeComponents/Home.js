@@ -2,6 +2,7 @@ import styled from "styled-components";
 import { useState } from "react";
 import { Button } from "../authComponents/SignIn";
 import { postFile } from "../../service/balance";
+import Total from "./Total";
 
 export default function Home() {
   const [file, setFile] = useState();
@@ -70,6 +71,7 @@ export default function Home() {
 
           <button>Upload</button>
         </form>
+        <Total />
       </FormWrapper>
       <br />
       <TableWrapper>
