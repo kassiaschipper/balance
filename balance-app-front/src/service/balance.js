@@ -14,10 +14,13 @@ function createHeaders() {
 }
 
 function postSignIn(body) {
-  // const config = createHeaders();
-  // console.log("entra")
   const promise = axios.post(`${BASE_URL}/sign-in`, body);
   return promise;
 }
 
-export { postSignIn }
+function postFile(body){
+  const promise = axios.post(`${BASE_URL}/home`, body);
+  return promise;
+}
+
+export { postSignIn, postFile }

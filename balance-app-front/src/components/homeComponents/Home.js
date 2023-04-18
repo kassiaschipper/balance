@@ -1,6 +1,7 @@
 import styled from "styled-components";
 import { useState } from "react";
 import { Button } from "../authComponents/SignIn";
+import { postFile } from "../../service/balance";
 
 export default function Home() {
   const [file, setFile] = useState();
@@ -26,8 +27,25 @@ export default function Home() {
         }, {});
         return obj;
       });
-
+     
       setData(array);
+      
+      const body = {
+        data
+      };
+      console.log(body)
+
+      postFile(body)
+        .then((res) => {
+          //resetForm();
+          alert("dados enviados");
+          console.log(body);
+        })
+        .catch(res =>{
+          //resetForm();
+          if(res.message === `Request failed with status code 401`)
+          alert("Você precisa de autorização");
+        }) 
     };
 
     if (file) {
@@ -42,6 +60,9 @@ export default function Home() {
 
   const headerKeys = Object.keys(Object.assign({}, ...data));
 
+  // function resetForm() {
+  //   setData("");  
+  // }
   return (
     <>
       <FormWrapper>
