@@ -1,4 +1,4 @@
-import { Body, Controller, Post } from '@nestjs/common';
+import { Body, Controller, Get, Post } from '@nestjs/common';
 import { FileService } from './file.service';
 import { CreateFileDto } from './dto/create-file.dto';
 
@@ -8,6 +8,11 @@ export class FileController {
 
     @Post()
     create(@Body() createFileDto:CreateFileDto){
-        return this.fileService.create(createFileDto)
+        return this.fileService.create(createFileDto);
+    }
+
+    @Get()
+    getTotal(){
+        return this.fileService.getBalanceSumByCpf();
     }
 }
