@@ -24,8 +24,7 @@ export default function SignIn() {
       .then((res) => {
         resetForm();
         setDisabledInput(false);
-        localStorage.setItem("token", JSON.stringify(res.data.token));
-        localStorage.setItem("userId", JSON.stringify(res.data.userId));
+        localStorage.setItem("token", JSON.stringify(res.data.access_token));
         navigate("/home");
       })
       .catch((res) => {
@@ -212,3 +211,5 @@ const Button = styled.button`
     height: 6%;
   }
 `;
+
+export { Button };
