@@ -20,22 +20,19 @@ export default function Total() {
   
   return (
     <Wrapper>
-      <button onClick={()=> balanceTotal()}>Somar</button>
-     
+      <button onClick={()=> balanceTotal()}>Somar</button>     
       <Table>
         <thead>
           <tr>
             <th>CPF</th>
-            <th>Date</th>
             <th>Soma ($)</th>
           </tr>
         </thead>
         <tbody>
-          {total.length > 0 && total.map((item) => (
-            <tr key={`${item.cpf}-${item.sate}`}>
+          {total.length > 0 && total.map((item, key) => (
+            <tr key={key}>
               <td>{item.cpf}</td>
-              <td>{item.date}</td>
-              <td>{item.sum}</td>
+               <td>{item.sum}</td>
             </tr>
           ))}
         </tbody>

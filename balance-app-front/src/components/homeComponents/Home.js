@@ -73,7 +73,7 @@ export default function Home() {
 
           <button>Upload</button>
         </form>
-       {/* <WrapperTotal><Total /></WrapperTotal>  */}
+      
       </FormWrapper>
       <br />
       <TableWrapper>
