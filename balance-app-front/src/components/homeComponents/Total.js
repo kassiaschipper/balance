@@ -13,9 +13,8 @@ export default function Total() {
     getTotal()
       .then((res) => {
         setTotal(res.data);
-        console.log(total);
       })
-      .catch((error) => console.log(error));
+      .catch((error) =>{});
   }
   
   return (

@@ -18,16 +18,14 @@ export default function RecoverPassword() {
       password,
     };
 
-    console.log(body)
     changePassword(body)
       .then((res) => {
         resetForm();
-        navigate("/sign-in")
+        navigate("/sign-in");
       })
       .catch((error) => {
-        console.log(error.response.data.message)
-        alert("Erro na solicitação, verifique os dados e tente novamente")
-        setLoading(false)
+        alert("Erro na solicitação, verifique os dados e tente novamente");
+        setLoading(false);
       });
   }
 
@@ -58,7 +56,7 @@ export default function RecoverPassword() {
               onChange={(e) => setPassword(e.target.value)}
               required
             />
-        <button disabled={loading}>Enviar</button>
+            <button disabled={loading}>Enviar</button>
           </FormContent>
         </form>
         {/* <Link to="/sign-in">
