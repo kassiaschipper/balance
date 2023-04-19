@@ -12,7 +12,7 @@ export class FileService {
         const fileDatas = await this.prisma.file_data.findMany({
             where: {
                 cpf: createFileDto.cpf,
-                sate: createFileDto.sate,
+                date: createFileDto.date,
             },
         });
       
@@ -35,7 +35,7 @@ export class FileService {
                 data: {
                     cpf: createFileDto.cpf,
                     balance: createFileDto.balance,
-                    sate: createFileDto.sate,
+                    date: createFileDto.date,
                 },
             });
       

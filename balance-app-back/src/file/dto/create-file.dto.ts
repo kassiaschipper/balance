@@ -1,12 +1,11 @@
-import { IsDate, IsNumber, IsOptional, IsString } from "class-validator";
+import { IsDate, IsNumber, IsOptional, IsString, Length } from "class-validator";
 import { File } from "../entities/file.entity";
-import { MaxLength } from "class-validator";
 import { Type } from "class-transformer";
 
 export class CreateFileDto extends File{
 
     @IsString()
-    @MaxLength(11)
+    @Length(11,11)
     cpf: string;
 
     @IsNumber()
@@ -15,7 +14,7 @@ export class CreateFileDto extends File{
     @IsOptional()
     @IsDate()
     @Type(() => Date)
-    sate?: Date;
+    date?: Date;
 
     @IsOptional()
     @IsDate()

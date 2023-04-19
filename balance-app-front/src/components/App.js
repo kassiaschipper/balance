@@ -12,7 +12,7 @@ export default function App() {
       <GlobalStyle />
       <BrowserRouter>
         <Routes>
-          <Route path="/sign-in" element={<SignIn></SignIn>} />
+          <Route path="/" element={<SignIn></SignIn>} />
           <Route path="/home" element={<PrivatePage><Home></Home></PrivatePage>}/>
           <Route path="*" element={<NotFoundPage></NotFoundPage>}/>
           <Route path="/sign-in/recovery" element={<RecoverPassword></RecoverPassword>}/>
