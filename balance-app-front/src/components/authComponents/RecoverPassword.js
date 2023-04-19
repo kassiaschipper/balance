@@ -21,7 +21,7 @@ export default function RecoverPassword() {
     changePassword(body)
       .then((res) => {
         resetForm();
-        navigate("/sign-in");
+        navigate("/");
       })
       .catch((error) => {
         alert("Erro na solicitação, verifique os dados e tente novamente");
@@ -58,10 +58,7 @@ export default function RecoverPassword() {
             />
             <button disabled={loading}>Enviar</button>
           </FormContent>
-        </form>
-        {/* <Link to="/sign-in">
-          <button disabled={loading}>Enviar</button>
-        </Link> */}
+        </form>        
       </Wrapper>
     </Container>
   );

@@ -17,6 +17,6 @@ model file_data {
   id        Int       @id @default(autoincrement())
   cpf       String    @db.VarChar(11)
   balance   Int
-  sate      DateTime? @default(now()) @db.Date
+  date      DateTime? @default(now()) @db.Date
   deletedAt DateTime? @db.Date
 }

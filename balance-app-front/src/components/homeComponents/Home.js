@@ -29,7 +29,7 @@ export default function Home() {
               array.push({ date: contents[0], document, balance });
                                     
               postFile({
-                sate: date,
+                date: date,
                 cpf: document,
                 balance,
               })

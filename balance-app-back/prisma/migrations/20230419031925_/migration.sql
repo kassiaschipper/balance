@@ -12,7 +12,7 @@ CREATE TABLE "file_data" (
     "id" SERIAL NOT NULL,
     "cpf" VARCHAR(11) NOT NULL,
     "balance" INTEGER NOT NULL,
-    "sate" DATE DEFAULT CURRENT_TIMESTAMP,
+    "date" DATE DEFAULT CURRENT_TIMESTAMP,
     "deletedAt" DATE,
 
     CONSTRAINT "file_data_pkey" PRIMARY KEY ("id")
