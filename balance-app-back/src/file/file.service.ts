@@ -52,8 +52,9 @@ export class FileService {
         return sum.map((value) => ({
             sum: value._sum.balance,
             cpf: value.cpf,
-            //date: new Date(value.sate).toISOString().slice(0, 10)
+            
         }));
 
     }
+
 }

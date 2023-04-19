@@ -1,7 +1,8 @@
-import { Injectable } from '@nestjs/common';
+import { Injectable, NotFoundException } from '@nestjs/common';
 import { CreateUserDto } from './dto/create-user.dto';
 import { PrismaService } from 'src/prisma/prisma.service';
 import * as bcrypt from "bcrypt";
+import { error } from 'console';
 @Injectable()
 export class UserService {
   
@@ -29,6 +30,20 @@ export class UserService {
       where: {email},
     });
     }
+
+   async changePassword(email: string, password:string){
+    const checkEmail = await this.findEmail(email);
+    const encrypted = await bcrypt.hash(password, 10);
+
+    if(checkEmail){
+     return this.prisma.user.update({
+        where:{email},
+        data: {email, password: encrypted}
+      })
+    }else {
+      throw new NotFoundException('Usuário não encontrado');
+    }
+   }
   }
 
 

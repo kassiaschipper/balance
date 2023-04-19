@@ -87,7 +87,7 @@ export default function SignIn() {
                   disabled={disabledInput}
                 />
                 <Button disabled={disabledInput}>Entrar</Button>
-                <Link to="/">
+                <Link to="/sign-in/recovery">
                   <p> Esqueceu sua senha? Clique aqui para recuperar</p>
                 </Link>
               </FormContent>

@@ -29,5 +29,8 @@ function getTotal(){
   const promise = axios.get(`${BASE_URL}/home`,config);
   return promise;
 }
-
-export { postSignIn, postFile, getTotal }
+function changePassword(body){
+  const promise = axios.put(`${BASE_URL}/user`, body);
+  return promise;
+}
+export { postSignIn, postFile, getTotal, changePassword }
