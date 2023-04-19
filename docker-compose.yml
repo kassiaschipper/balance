@@ -1,0 +1,44 @@
+services:
+  postgres:
+    image: postgres
+    container_name: postgres
+    restart: always
+    ports:
+      - 5436:5432/tcp
+    env_file:
+      - ./balance-app-back/.env
+    volumes:
+      - postgres-volume:/var/lib/postgresql/data
+
+  node:
+    container_name: node
+    restart: always
+    build: ./balance-app-back
+    ports:
+      - 4000:4000
+    depends_on:
+      - postgres
+    env_file:
+      - ./balance-app-back/.env
+
+  react:
+    container_name: react
+    build: ./balance-app-front
+    volumes:
+      - react-volume:/var/www/html
+
+  nginx: 
+    container_name: nginx_app
+    build: ./nginx
+    restart: always
+    ports:
+      - 8080:80
+    volumes:
+      - react-volume:/var/www/html
+    depends_on:
+      - postgres
+      - node
+      - react
+volumes:
+  postgres-volume:
+  react-volume:
