@@ -4,6 +4,7 @@ import SignIn from "./authComponents/SignIn";
 import Home from "./homeComponents/Home";
 import PrivatePage from "../PrivatePage.js";
 import NotFoundPage from "./NotFoundPage";
+import RecoverPassword from "./authComponents/RecoverPassword";
 
 export default function App() {
   return (
@@ -14,6 +15,7 @@ export default function App() {
           <Route path="/sign-in" element={<SignIn></SignIn>} />
           <Route path="/home" element={<PrivatePage><Home></Home></PrivatePage>}/>
           <Route path="*" element={<NotFoundPage></NotFoundPage>}/>
+          <Route path="/sign-in/recovery" element={<RecoverPassword></RecoverPassword>}/>
         </Routes>
       </BrowserRouter>
     </>
